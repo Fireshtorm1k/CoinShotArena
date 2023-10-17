@@ -93,14 +93,22 @@ public class PhotonPlayerController : MonoBehaviourPunCallbacks, IPunObservable
             0.2f, ground);
         HandleMovement();
     }
-
+    
+    [PunRPC]
+    void ChangeDirection(bool direction)
+    {
+        _renderer.flipX = direction;
+    }
 
     private void HandleMovement()
     {
         float horizontal = _input.actions["Move"].ReadValue<Vector2>().x;
         if (horizontal != 0)
         {
-            _renderer.flipX = horizontal < 0;
+            if (_renderer.flipX != horizontal < 0)
+            {
+                _photonView.RPC("ChangeDirection",RpcTarget.All, horizontal<0);
+            }
         }
         _animator.SetFloat("SpeedMulti", _rigidbody2D.velocity.x);
         _rigidbody2D.velocity = new Vector2(horizontal * speed, _rigidbody2D.velocity.y);

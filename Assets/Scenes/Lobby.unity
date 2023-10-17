@@ -952,7 +952,6 @@ MonoBehaviour:
   lobbyEntryPrefab: {fileID: 6020415025854737451, guid: 2c1848b5367e0454cac1a1215dad7d9b, type: 3}
   contentParent: {fileID: 11203377}
   _createButton: {fileID: 1472677463}
-  soName: {fileID: 11400000, guid: e0aef88300f0e304e935854a831ae910, type: 2}
   lobbyNameInputField: {fileID: 434703995}
   ChangeNamePanel: {fileID: 2098337285}
 --- !u!114 &503693004
